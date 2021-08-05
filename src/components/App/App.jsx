@@ -4,12 +4,12 @@ import RandomPlanet from "../RandomPlanet";
 
 import SwapiService from '../../services/swapi-service'
 import './App.scss';
-//import ErrorIndicator from "../ErrorIndicator";
-import PeoplePage from "../PeoplePage";
-//import ItemList from "../ItemList";
-//import PersonDetails from "../PersonDetails";
-//import ErrorBoundry from "../ErrorBoundry";
-//import Row from "../Row";
+
+import ItemDetails from "../ItemDetails";
+
+
+import Row from "../Row";
+import { Record } from "../ItemDetails/ItemDetails";
 
 export default class App extends Component {
   swapiService = new SwapiService();
@@ -21,34 +21,50 @@ export default class App extends Component {
 
   render() {
 
-    //const { getPerson, getStarship, getPersonImage, getStarshipImage } = this.swapiService;
+    const { getPerson, getStarship, getPlanet, getPersonImage, getStarshipImage, getPlanetImage } = this.swapiService;
 
-    // const personDetails = (
-    //   <ItemDetails
-    //     itemId={11}
-    //      getData={getPerson}
-    //      //getImageUrl={getPersonImage}
-    //     >
-    //   </ItemDetails>
-    // );
+    const personDetails = (
+      <ItemDetails
+        itemId={11}
+        getData={getPerson}
+        getImageUrl={getPersonImage}>
 
-    // const starshipDetails = (
-    //   <ItemDetails
-    //     itemId={5}
-    //      getData={getStarship}
-    //     // getImageUrl={getStarshipImage}
-    //     >
-    //   </ItemDetails>
-    // );
+        <Record field="gender" label="Gender" />
+        <Record field="eyeColor" label="Eye Color" />
+
+      </ItemDetails>
+    );
+
+    const starshipDetails = (
+      <ItemDetails
+        itemId={5}
+        getData={getStarship}
+        getImageUrl={getStarshipImage} >
+
+        <Record field="model" label="Model" />
+        <Record field="length" label="Length" />
+        <Record field="costInCredits" label="Cost" />
+
+      </ItemDetails>
+    );
+
+    const planetDetails = (
+      <ItemDetails
+        itemId={3}
+        getData={getPlanet}
+        getImageUrl={getPlanetImage}
+      />
+    );
 
     return (
       <div className="app">
         <Header />
         <RandomPlanet />
-        {/* <Row left={personDetails}
-            right={starshipDetails} /> */}
+        <Row left={personDetails}
+          right={starshipDetails} />
+        {/* {planetDetails} */}
 
-        <PeoplePage />
+        {/* <PeoplePage /> */}
         {/* <div className="app-wrap">
           <div className="col-md-6">
             <ItemList

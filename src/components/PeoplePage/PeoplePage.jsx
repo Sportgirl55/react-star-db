@@ -5,8 +5,8 @@ import ItemList from '../ItemList';
 import Row from '../Row';
 
 import './PeoplePage.scss';
-//import ItemDetails from '../PersonDetails';
-import PersonDetails from '../PersonDetails';
+
+import ItemDetails from '../ItemDetails';
 import ErrorBoundry from '../ErrorBoundry/ErrorBoundry';
 
 
@@ -38,13 +38,13 @@ export default class PeoplePage extends Component {
       </ItemList>
     );
 
-    const personDetails = (
-      <PersonDetails personId={this.state.selectedPerson} />
+    const itemDetails = (
+      <ItemDetails itemId={this.state.selectedPerson} />
     )
 
     return (
       <ErrorBoundry>
-        <Row left={itemList} right={personDetails} />
+        <Row left={itemList} right={itemDetails} />
       </ErrorBoundry>
     )
   }
