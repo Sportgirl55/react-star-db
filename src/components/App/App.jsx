@@ -1,96 +1,58 @@
 import React, { Component } from "react";
 import Header from "../Header";
 import RandomPlanet from "../RandomPlanet";
-
+import ErrorBoundry from "../ErrorBoundry/ErrorBoundry";
 import SwapiService from '../../services/swapi-service'
 import './App.scss';
 
-import ItemDetails from "../ItemDetails";
 
+import {
+  PersonList,
+  PlanetList,
+  StarshipList
+} from "../sw-components/ItemLists";
 
-import Row from "../Row";
-import { Record } from "../ItemDetails/ItemDetails";
+import {
+  PersonDetails,
+  PlanetDetails,
+  StarshipDetails,
+} from "../sw-components/Details";
+
 
 export default class App extends Component {
   swapiService = new SwapiService();
-  state = {
-    selectedPerson: 5,
-
-  };
-
+  // state = {
+  //   selectedPerson: 5,
+  // };
 
   render() {
-
-    const { getPerson, getStarship, getPlanet, getPersonImage, getStarshipImage, getPlanetImage } = this.swapiService;
-
-    const personDetails = (
-      <ItemDetails
-        itemId={11}
-        getData={getPerson}
-        getImageUrl={getPersonImage}>
-
-        <Record field="gender" label="Gender" />
-        <Record field="eyeColor" label="Eye Color" />
-
-      </ItemDetails>
-    );
-
-    const starshipDetails = (
-      <ItemDetails
-        itemId={5}
-        getData={getStarship}
-        getImageUrl={getStarshipImage} >
-
-        <Record field="model" label="Model" />
-        <Record field="length" label="Length" />
-        <Record field="costInCredits" label="Cost" />
-
-      </ItemDetails>
-    );
-
-    const planetDetails = (
-      <ItemDetails
-        itemId={3}
-        getData={getPlanet}
-        getImageUrl={getPlanetImage}
-      />
-    );
-
     return (
-      <div className="app">
-        <Header />
-        <RandomPlanet />
-        <Row left={personDetails}
-          right={starshipDetails} />
-        {/* {planetDetails} */}
+      <ErrorBoundry>
+        <div className="app">
+          <Header />
+          <RandomPlanet />
 
-        {/* <PeoplePage /> */}
-        {/* <div className="app-wrap">
-          <div className="col-md-6">
-            <ItemList
-              onItemSelected={this.onPersonSelected}
-              getData={this.swapiService.getAllPlanets}
-              renderItem={(item) => 
-                (<span>{item.name} <button>!!!</button></span>)
-               } />
+          <PersonDetails itemId={11} />
+          <PlanetDetails itemId={5} />
+          <StarshipDetails itemId={9} />
+ 
+          <div className="app-wrap">
+            <div className="col-md-6">
+              <PersonList />
+            </div>
           </div>
-          <div className="col-md-6">
-            <PersonDetails personId={this.state.selectedPerson} />
+          <div className="app-wrap">
+            <div className="col-md-6">
+              <PlanetList />
+            </div>
+          </div>
+          <div className="app-wrap">
+            <div className="col-md-6">
+              <StarshipList />
+            </div>
           </div>
         </div>
-        <div className="app-wrap">
-          <div className="col-md-6">
-            <ItemList
-              onItemSelected={this.onPersonSelected}
-              getData={this.swapiService.getAllStarships}
-             renderItem={(item) => item.name}
-            />
-          </div>
-          <div className="col-md-6">
-            <PersonDetails personId={this.state.selectedPerson} />
-          </div>
-        </div>   */}
-      </div>
+      </ErrorBoundry>
     )
   }
 }

@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
-import SwapiService from '../../services/swapi-service';
-//  import ErrorIndicator from '../ErrorIndicator';
-//  import Spinner from '../Spinner';
-
 import './ItemDetails.scss';
 
- const Record = ({ item, field, label }) => {
+const Record = ({ item, field, label }) => {
   return (
     <li className="list-group-item">
       <span className="term">{label}</span>
@@ -14,17 +10,13 @@ import './ItemDetails.scss';
   )
 };
 
-  export {Record};
-
+export { Record };
 
 
 export default class ItemDetails extends Component {
-  swapiService = new SwapiService();
   state = {
     item: null,
     image: null
-    // loading: false,
-    // error: false
   }
 
   componentDidMount() {
@@ -58,36 +50,25 @@ export default class ItemDetails extends Component {
       return <span>Select an item from the list</span>
     }
 
-    const { id, name, gender, birthYear, eyeColor } = item;
-
-
-    // const hasData = !(loading || error);
-    // const errorMessage = error ? <ErrorIndicator /> : null;
-    // const spinner = loading ? <Spinner /> : null;
-    // const content = hasData ? <PersonView item={item} /> : null;
+    const {name} = item;
 
     return (
       <div className="item-details card">
         <img className="item-image"
           src={image}
-          alt="character" />
+          alt="item" />
 
         <div className="card-body">
 
           <h4>{name}</h4>
           <ul className="list-group list-group-flush">
-            { 
-         React.Children.map(this.props.children, (child, idx) => {
-           return React.cloneElement(child, {item});
-         }
-          )
-             }
-
+            {
+              React.Children.map(this.props.children, (child) => {
+                return React.cloneElement(child, { item });
+              })
+            }
           </ul>
         </div>
-        {/* {errorMessage}
-         {spinner}
-         {content}  */}
       </div>
     )
   }
