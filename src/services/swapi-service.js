@@ -1,20 +1,19 @@
 export default class SwapiService {
-  _apiBase = 'https://swapi.dev/api';
-  _imageBase = 'https://starwars-visualguide.com/assets/img';
+  _apiBase = "https://swapi.dev/api";
+  _imageBase = "https://starwars-visualguide.com/assets/img";
 
   getResource = async (url) => {
     const res = await fetch(`${this._apiBase}${url}`);
 
     if (!res.ok) {
-      throw new Error(`Could not fetch ${url}` +
-        `, received ${res.status}`)
+      throw new Error(`Could not fetch ${url}` `, received ${res.status}`);
     }
     return await res.json();
   };
 
   getAllPeople = async () => {
     const res = await this.getResource(`/people/`);
-    return res.results.map(this._transformPerson);
+    return res.results.map(this._transformPerson).slice(0, 7);
   };
 
   getPerson = async (id) => {
@@ -24,7 +23,7 @@ export default class SwapiService {
 
   getAllPlanets = async () => {
     const res = await this.getResource(`/planets/`);
-    return res.results.map(this._transformPlanet);
+    return res.results.map(this._transformPlanet).slice(0, 5);
   };
 
   getPlanet = async (id) => {
@@ -34,7 +33,7 @@ export default class SwapiService {
 
   getAllStarships = async () => {
     const res = await this.getResource(`/starships/`);
-    return res.results.map(this._transformStarship);
+    return res.results.map(this._transformStarship).slice(0, 5);
   };
 
   getStarship = async (id) => {
@@ -42,17 +41,17 @@ export default class SwapiService {
     return this._transformStarship(starship);
   };
 
-  getPersonImage = ({id}) => {
-    return `${this._imageBase}/characters/${id}.jpg`
-  }
+  getPersonImage = ({ id }) => {
+    return `${this._imageBase}/characters/${id}.jpg`;
+  };
 
-  getStarshipImage = ({id}) => {
-    return `${this._imageBase}/starships/${id}.jpg`
-  }
+  getStarshipImage = ({ id }) => {
+    return `${this._imageBase}/starships/${id}.jpg`;
+  };
 
-  getPlanetImage = ({id}) => {
-    return `${this._imageBase}/planets/${id}.jpg`
-  }
+  getPlanetImage = ({ id }) => {
+    return `${this._imageBase}/planets/${id}.jpg`;
+  };
 
   _extractId = (item) => {
     const idRegExp = /\/([0-9]*)\/$/;

@@ -14,10 +14,6 @@ export default class App extends Component {
     swapiService: new SwapiService()
   };
 
-  onContextChange = () => {
-    console.log('Context Change')
-  }
-
   render() {
     return (
       <ErrorBoundry>
