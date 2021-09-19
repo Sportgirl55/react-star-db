@@ -1,23 +1,13 @@
 .app {
   width: 1440px;
   margin: 0 auto;
-}
+  
+  .app-wrap {
+    display: flex;
+    margin-top: 48px;
 
-// .app-wrap {
-//   display: grid;
-//   grid-template-columns: 1fr 1fr;
-//   grid-gap: 48px;
-//   margin-top: 48px;
-//   & > div {
-//     width: 100%;
-//   }
-// }
-
-.app-wrap {
-  display: flex;
-
-  margin-top: 48px;
-  & div:first-child {
-    margin-right: 48px;
+    & div:first-child {
+      margin-right: 48px;
+    }
   }
 }

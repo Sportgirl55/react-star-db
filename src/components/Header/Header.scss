@@ -1,19 +1,25 @@
 .header {
   display: flex;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
   padding-left: 10px;
+  .header-list {
+    display: flex;
+  }
+
   ul li {
     list-style: none;
     margin: 0;
-    padding: .5rem 1rem;
+    padding: 0.5rem 1rem;
     border-radius: 3px;
     &:hover {
       background-color: #444;
     }
   }
-  a:hover {
+
+  a {
     text-decoration: none;
   }
+  
   h3 a {
     color: white;
     &:hover {
@@ -21,16 +27,3 @@
     }
   }
 }
-
-.header-list {
-  display: flex;
-}
-
-
-
-
-
-
-
-
-

@@ -12,7 +12,6 @@ const Record = ({ item, field, label }) => {
 
 export { Record };
 
-
 export default class ItemDetails extends Component {
   state = {
     item: null,
@@ -50,7 +49,7 @@ export default class ItemDetails extends Component {
       return <span>Select an item from the list</span>
     }
 
-    const {name} = item;
+    const { name } = item;
 
     return (
       <div className="item-details card">

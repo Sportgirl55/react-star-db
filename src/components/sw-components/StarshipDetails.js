@@ -3,10 +3,9 @@ import { WithSwapiService } from "../hoc-helpers";
 import ItemDetails from "../ItemDetails";
 import { Record } from "../ItemDetails/ItemDetails";
 
-
 const StarshipDetails = (props) => {
   return (
-    <ItemDetails {...props}  >
+    <ItemDetails {...props}>
       <Record field="model" label="Model" />
       <Record field="length" label="Length" />
       <Record field="costInCredits" label="Cost" />

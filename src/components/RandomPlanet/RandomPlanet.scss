@@ -2,27 +2,21 @@
   display: flex;
   padding: 1rem;
   background-color: #303030;
-  & .planet-image {
+  .planet-image {
     width: 150px;
     height: 150px;
     border-radius: 10px;
     margin-right: 1rem;
   }
-  & .list-group {
+  .list-group {
     margin: 1rem 0 0 1rem;
     border-radius: 0;
   }
-  & .list-group-item {
-    padding: .25rem;
+  .list-group-item {
+    padding: 0.25rem;
     border-width: 0 0 1px;
-    & .term {
-      margin-right: .5rem;
+    .term {
+      margin-right: 0.5rem;
     }
   }
 }
-
-
-
-
-
-
